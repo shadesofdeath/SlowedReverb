@@ -31,7 +31,7 @@ export function AudioProcessor() {
     if (!file) return
     
     try {
-      const context = new (window.AudioContext || window.webkitAudioContext)()
+      const context = new (window.AudioContext || (window as any).webkitAudioContext)()
       const arrayBuffer = await file.arrayBuffer()
       const decodedBuffer = await context.decodeAudioData(arrayBuffer)
       
